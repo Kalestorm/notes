@@ -7,7 +7,7 @@ import config from "../config";
 import "./NewNote.css";
 import { API } from "aws-amplify";
 import { NoteType } from "../types/note";
-//import { onError } from "../lib/errorLib";
+import { onError } from "../lib/errorLib";
 import { s3Upload } from "../lib/awsLib";
 
 export default function NewNote() {
@@ -25,38 +25,38 @@ export default function NewNote() {
     file.current = event.currentTarget.files[0];
   }
 
-function createNote(note: NoteType) {
-  return API.post("notes", "/notes", {
-    body: note,
-  });
-}
-
-async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-
-  if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-    alert(
-      `Please pick a file smaller than ${
-        config.MAX_ATTACHMENT_SIZE / 1000000
-      } MB.`
-    );
-    return;
+  function createNote(note: NoteType) {
+    return API.post("notes", "/notes", {
+      body: note,
+    });
   }
-
-  setIsLoading(true);
-
-  try {
-    const attachment = file.current
-      ? await s3Upload(file.current)
-      : undefined;
-
-    await createNote({ content, attachment });
-    nav("/");
-  } catch (e) {
-    onError(e);
-    setIsLoading(false);
+  
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+  
+    if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
+      alert(
+        `Please pick a file smaller than ${
+          config.MAX_ATTACHMENT_SIZE / 1000000
+        } MB.`
+      );
+      return;
+    }
+  
+    setIsLoading(true);
+  
+    try {
+      const attachment = file.current
+        ? await s3Upload(file.current)
+        : undefined;
+  
+      await createNote({ content, attachment });
+      nav("/");
+    } catch (e) {
+      onError(e);
+      setIsLoading(false);
+    }
   }
-}
 
   return (
     <div className="NewNote">
@@ -87,4 +87,3 @@ async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     </div>
   );
 }
-

@@ -10,8 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^6.3.15",
     "aws-amplify": "^5.3.27",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.5",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
