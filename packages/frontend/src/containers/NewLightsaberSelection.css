@@ -1,0 +1,270 @@
+/* General Styling */
+.star-wars-body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #ffe81f;
+  font-family: 'Pathway Gothic One', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Star Wars Intro Animation */
+.star-wars-intro {
+  min-height: 100vh;
+  perspective: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+  font-size: 2rem;
+  opacity: 0;
+  animation: intro 3s ease-out;
+}
+
+.main-logo {
+  position: relative;
+  margin-top: 2rem;
+  height: 100px;
+  text-align: center;
+  z-index: 10;
+}
+
+.main-logo img {
+  width: 200px;
+  opacity: 0;
+  animation: logo 6s ease-out 3s;
+  filter: drop-shadow(0 0 10px #ffe81f);
+}
+
+.main-content {
+  position: relative;
+  top: -100px;
+  transform-origin: 50% 100%;
+  animation: crawl 60s linear;
+}
+
+.content-header, .content-body {
+  text-align: center;
+}
+
+.content-header {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.content-body {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Characters Section */
+.characters {
+  padding: 2rem;
+  text-align: center;
+  background: #111;
+}
+
+.character-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.character {
+  background: #222;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.character img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* Animations */
+@keyframes intro {
+  0% { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes logo {
+  0% { opacity: 1; transform: scale(1.5); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: scale(0.1); }
+}
+
+@keyframes fade-in-logo {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.5);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #ffe81f); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 20px #ffe81f); }
+}
+
+@keyframes crawl {
+  0% { top: 0; transform: rotateX(20deg) translateZ(0); }
+  100% { top: -6000px; transform: rotateX(25deg) translateZ(-2500px); }
+}
+
+/* Boxed Scrolling Text */
+.scroll-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.holo-screen {
+  width: 80%;
+  max-width: 1200px;
+  min-height: 500px;
+  border: 3px solid #3a3a3a;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 20px #00f0ff, inset 0 0 10px #00f0ff;
+}
+
+.scrolling-text {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Returning Logo Styles */
+.returning-logo {
+  position: absolute;
+  top: calc(2rem + 10px);  /* Adjusted to match main-logo's center position */
+  left: 0;
+  right: 0;
+  height: 80px;  /* Adjusted to match main-logo image height */
+  text-align: center;
+  z-index: 10;
+  opacity: 0;
+  animation: 
+    fade-in-logo 5s ease-out 8s forwards,
+    pulse 4s ease-in-out 13s infinite;
+}
+
+.pulsing-logo {
+  width: 200px;
+  filter: drop-shadow(0 0 10px #ffe81f);
+}
+
+.lightsaber-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.lightsaber-option {
+  flex: 0 0 calc(50% - 2rem);  /* Take up half the width minus the gap */
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;  /* Adjusted for two items per row */
+}
+
+.lightsaber-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+.lightsaber-option.selected {
+  border-color: #00f0ff;
+  box-shadow: 0 0 30px #00f0ff;
+}
+
+.lightsaber-color {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px currentColor;
+}
+
+.lightsaber-option h3 {
+  color: #ffe81f;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.lightsaber-option h4 {
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.lightsaber-option p {
+  color: #ffffff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.loading-text {
+  color: #00f0ff;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+  animation: pulse 2s infinite;
+}
+
+/* Add styling for the form */
+.NewLightsaberSelection form {
+  padding: 2rem 0 4rem 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.NewLightsaberSelection form .stack {
+  width: 80%;
+  max-width: 1200px;
+}

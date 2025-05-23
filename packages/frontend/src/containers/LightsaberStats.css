@@ -1,0 +1,50 @@
+.LightsaberStats {
+  padding: 2rem;
+  background: #000;
+  min-height: calc(100vh - 4rem);
+  color: var(--light-text);
+}
+
+.LightsaberStats .star-wars-body {
+  margin: 0;
+  padding: 0;
+  color: #ffe81f;
+  font-family: 'Pathway Gothic One', sans-serif;
+  overflow-x: hidden;
+  min-height: calc(100vh - 4rem);
+}
+
+.LightsaberStats h1 {
+  color: #FFE81F;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+  text-align: center;
+}
+
+.scroll-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.holo-screen {
+  width: 80%;
+  max-width: 1200px;
+  min-height: 550px;
+  border: 3px solid #3a3a3a;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 20px #00f0ff, inset 0 0 10px #00f0ff;
+  padding: 2rem;
+}
+
+.loading {
+  color: #FFE81F;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 2rem;
+} 

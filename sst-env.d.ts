@@ -17,6 +17,18 @@ declare module "sst" {
       "id": string
       "type": "sst.aws.CognitoIdentityPool"
     }
+    "LightsaberOptions": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
+    "LightsaberSelections": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
+    "Lightsabers": {
+      "name": string
+      "type": "sst.aws.Bucket"
+    }
     "Notes": {
       "name": string
       "type": "sst.aws.Dynamo"

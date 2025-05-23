@@ -1,0 +1,34 @@
+.stats-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* Override Recharts default styles for Star Wars theme */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #FFE81F;
+  opacity: 0.2;
+}
+
+.recharts-text,
+.recharts-label,
+.recharts-legend-item-text {
+  fill: #FFE81F !important;
+  color: #FFE81F !important;
+}
+
+.recharts-tooltip-wrapper {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid #FFE81F !important;
+}
+
+.recharts-tooltip-wrapper .recharts-tooltip-label,
+.recharts-tooltip-wrapper .recharts-tooltip-item {
+  color: #FFE81F !important;
+}
+
+.recharts-default-tooltip {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid #FFE81F !important;
+  color: #FFE81F !important;
+} 

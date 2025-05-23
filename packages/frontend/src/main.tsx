@@ -27,6 +27,11 @@ Amplify.configure({
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION,
       },
+      {
+        name: "api",
+        endpoint: config.apiGateway.URL,
+        region: config.apiGateway.REGION,
+      },
     ],
   },
 });

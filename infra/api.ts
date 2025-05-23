@@ -1,21 +1,33 @@
-import { table } from "./storage";
+import { table, lightsaberOptionsTable, lightsaberSelectionsTable } from "./storage";
 
 // Create the API
 export const api = new sst.aws.ApiGatewayV2("Api", {
   transform: {
     route: {
       handler: {
-        link: [table],
+        link: [table, lightsaberOptionsTable, lightsaberSelectionsTable]
       },
-      args: {
-        auth: { iam: true }
-      },
+       args: {
+         auth: { iam: true }
+       },
     }
   }
 });
 
+// Protected routes (require IAM auth)
 api.route("POST /notes", "packages/functions/src/create.main");
 api.route("GET /notes/{id}", "packages/functions/src/get.main");
 api.route("GET /notes", "packages/functions/src/list.main");
 api.route("PUT /notes/{id}", "packages/functions/src/update.main");
 api.route("DELETE /notes/{id}", "packages/functions/src/delete.main");
+
+// Public routes (no auth required)
+api.route("GET /lightsaberOptions", "packages/functions/src/listLightsaberOptions.main");
+api.route("POST /lightsaberOptions", "packages/functions/src/createLightsaberOption.main");
+
+// Protected routes (requires IAM auth)
+api.route("POST /lightsaberSelections", "packages/functions/src/createLightsaberSelection.main");
+api.route("GET /lightsaberSelections", "packages/functions/src/listLightsaberSelections.main");
+api.route("GET /lightsaberSelections/{id}", "packages/functions/src/getLightsaberSelections.main");
+api.route("DELETE /lightsaberSelections/{id}", "packages/functions/src/deleteLightsaberSelection.main");
+api.route("GET /lightsaberStats", "packages/functions/src/getLightsaberStats.main");

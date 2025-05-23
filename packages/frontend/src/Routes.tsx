@@ -5,8 +5,11 @@ import NewNote from "./containers/NewNote.tsx";
 import Login from "./containers/Login.tsx";
 import Signup from "./containers/Signup.tsx";
 import Notes from "./containers/Notes.tsx";
+import NewLightsaberSelection from "./containers/NewLightsaberSelection.tsx";
+import LightsaberSelections from "./containers/LightsaberSelections.tsx";
 import AuthenticatedRoute from "./components/AuthenticatedRoute.tsx";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute.tsx";
+import LightsaberStats from "./containers/LightsaberStats";
 
 
 export default function Links() {
@@ -42,6 +45,30 @@ export default function Links() {
         element={
           <AuthenticatedRoute>
             <Notes />
+          </AuthenticatedRoute>
+        }
+      />
+      <Route
+        path="/LightsaberSelection/new"
+        element={
+          <AuthenticatedRoute>
+            <NewLightsaberSelection />
+          </AuthenticatedRoute>
+        }
+      />
+      <Route
+        path="/LightsaberSelections/:id"
+        element={
+          <AuthenticatedRoute>
+            <LightsaberSelections />
+          </AuthenticatedRoute>
+        }
+      />
+      <Route
+        path="/lightsaberStats"
+        element={
+          <AuthenticatedRoute>
+            <LightsaberStats />
           </AuthenticatedRoute>
         }
       />
